@@ -1,0 +1,13 @@
+name: Ubuntu 20.04 i386 arch fix
+description: Allows to install i386 packages
+branding:
+  icon: message-circle
+  color: green
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        set -xeu -o pipefail
+        $GITHUB_ACTION_PATH/gha.sh
+      shell: bash
