@@ -4,6 +4,12 @@ branding:
   icon: message-circle
   color: green
 
+inputs:
+  add_i386:
+    description: Add i386 arch
+    required: false
+    default: true
+
 runs:
   using: "composite"
   steps:
@@ -11,3 +17,5 @@ runs:
         set -xeu -o pipefail
         $GITHUB_ACTION_PATH/gha.sh
       shell: bash
+      env:
+        INPUT_ADD_I386: ${{ inputs.add_i386 }}

@@ -10,3 +10,8 @@ fi
 sudo apt-add-repository -y ppa:ondrej/php
 sudo apt-get install ppa-purge
 sudo ppa-purge -y ppa:ondrej/php
+
+if [[ "$INPUT_ADD_I386" != 'false' ]]; then
+  sudo dpkg --add-architecture i386
+  sudo apt -qq update
+fi
