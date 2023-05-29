@@ -7,11 +7,10 @@ if ! grep "Ubuntu" /etc/issue; then
   exit 0
 fi
 
-sudo eatmydata apt-get install ppa-purge
-sudo eatmydata ppa-purge -y ppa:ubuntu-toolchain-r/test
-sudo eatmydata  dpkg --add-architecture i386
-sudo eatmydata  apt -qq update
+sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list
+sudo eatmydata dpkg --add-architecture i386
+sudo eatmydata apt-get update -qq
 
 if [[ "$INPUT_INSTALL_WINE" != 'false' ]]; then
-  sudo DEBIAN_FRONTEND=noninteractive eatmydata apt install -y --no-install-recommends wine-stable wine32
+  sudo DEBIAN_FRONTEND=noninteractive eatmydata apt-get install -yqq --allow-downgrades libc6:i386 libgcc-s1:i386 libstdc++6:i386 wine
 fi

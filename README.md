@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: devopsx/gha-ubuntu-i386-fix@master
-        with:
-          install_wine: true  # optionally, install wine
+# uncomment if you don't need wine
+#        with:
+#          install_wine: false
 ```
