@@ -1,14 +1,14 @@
-name: Ubuntu 20.04 i386 arch fix
+name: Ubunt i386 arch fix
 description: Allows to install i386 packages
 branding:
   icon: message-circle
   color: green
 
 inputs:
-  add_i386:
-    description: Add i386 arch
+  install_wine:
+    description: Install wine
     required: false
-    default: true
+    default: false
 
 runs:
   using: "composite"
@@ -18,4 +18,4 @@ runs:
         $GITHUB_ACTION_PATH/gha.sh
       shell: bash
       env:
-        INPUT_ADD_I386: ${{ inputs.add_i386 }}
+        INPUT_INSTALL_WINE: ${{ inputs.install_wine }}

@@ -2,16 +2,16 @@
 
 set -xeu -o pipefail
 
-if ! grep "20.04" /etc/issue; then
-  echo "Not Ubuntu 20.04, pass"
+if ! grep "Ubuntu" /etc/issue; then
+  echo "Not Ubuntu, pass"
   exit 0
 fi
 
-sudo apt-add-repository -y ppa:ondrej/php
-sudo apt-get install ppa-purge
-sudo ppa-purge -y ppa:ondrej/php
+sudo eatmydata apt-get install ppa-purge
+sudo eatmydata ppa-purge -y ppa:ubuntu-toolchain-r/test
+sudo eatmydata  dpkg --add-architecture i386
+sudo eatmydata  apt -qq update
 
-if [[ "$INPUT_ADD_I386" != 'false' ]]; then
-  sudo dpkg --add-architecture i386
-  sudo apt -qq update
+if [[ "$INPUT_INSTALL_WINE" != 'false' ]]; then
+  sudo DEBIAN_FRONTEND=noninteractive eatmydata apt install -y --no-install-recommends wine-stable wine32
 fi
