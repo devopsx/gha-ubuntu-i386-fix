@@ -8,7 +8,11 @@ inputs:
   install_wine:
     description: Install wine
     required: false
-    default: true
+    default: "true"
+  wine_fix_read_access_denied:
+    description: Fix wine "Read access denied for device"
+    required: false
+    default: "true"
 
 runs:
   using: "composite"
@@ -19,3 +23,4 @@ runs:
       shell: bash
       env:
         INPUT_INSTALL_WINE: ${{ inputs.install_wine }}
+        INPUT_WINE_FIX_READ_ACCESS_DENIED: ${{ inputs.wine_fix_read_access_denied }}

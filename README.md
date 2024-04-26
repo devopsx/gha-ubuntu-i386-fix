@@ -6,7 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: devopsx/gha-ubuntu-i386-fix@master
-# uncomment if you don't need wine
-#        with:
-#          install_wine: false
+        # # optional
+        # with:
+        #   # if you don't need wine
+        #   install_wine: false
+        #   # If you want to skip fix for "Read access denied for device"
+        #   wine_fix_read_access_denied: false
 ```
