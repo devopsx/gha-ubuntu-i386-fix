@@ -16,6 +16,7 @@ if [[ "$INPUT_INSTALL_WINE" != 'false' ]]; then
 
     # wine pollutes the log with "wine: Read access denied for device" if z is linked to /
     if [[ "$INPUT_WINE_FIX_READ_ACCESS_DENIED" != 'false' ]]; then
+        WINEDEBUG=-all wineboot
         z="$(readlink -f ~/.wine/dosdevices/z:)"
         if [[ "$z" == "/" ]]; then
             rm -f ~/.wine/dosdevices/z:
